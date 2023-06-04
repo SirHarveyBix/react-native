@@ -1,11 +1,23 @@
-import { Text, View } from 'react-native';
-import { styles } from '../App.style';
+import { Pressable, Text, View } from 'react-native';
+import { styles } from './GoalItem.style';
 
-export const GoalItem = ({ course }: { course: string }) => {
+type GoalItemProps = {
+  course: string;
+  onDelete: (id: string) => void;
+  id: string;
+};
+
+export const GoalItem = ({ course, onDelete, id }: GoalItemProps) => {
   return (
-    /** 2 differents styles : fit better between iOs / android */
+    /* 2 differents styles : fit better between iOs / android */
     <View style={styles.goalItem}>
-      <Text style={styles.goalText}>{course}</Text>
+      <Pressable
+        onPress={onDelete.bind(this, id)}
+        android_ripple={{ color: '#e120ef' }} // android
+        style={({ pressed }) => pressed && styles.pressedItem} // android & ios
+      >
+        <Text style={styles.goalText}>{course}</Text>
+      </Pressable>
     </View>
   );
 };
