@@ -1,6 +1,6 @@
 import { Pressable, Text, View } from 'react-native';
 import { styles } from './PrimaryButton.styles';
-import { colors } from '../constants/colors';
+import { colors } from '../../utils/constant';
 
 type PropsPrimaryButton = {
   children: string | JSX.Element;

@@ -1,10 +1,10 @@
 import { Alert, TextInput, View } from 'react-native';
-import { PrimaryButton } from '../components/PrimaryButton';
 import { styles } from './StartScreenGame.styles';
 import { useState } from 'react';
+import { PrimaryButton } from '../components/ui/PrimaryButton';
 
 type StartScreenGameProps = {
-  onPickNumber: (pickedNumber: string | number) => void;
+  onPickNumber: (pickedNumber: number) => void;
 };
 export const StartScreenGame = ({ onPickNumber }: StartScreenGameProps) => {
   const [enteredNumber, setEnteredNumber] = useState('');

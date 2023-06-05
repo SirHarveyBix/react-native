@@ -3,20 +3,20 @@ import { styles } from './App.styles';
 import { LinearGradient } from 'expo-linear-gradient';
 import { ImageBackground, SafeAreaView } from 'react-native';
 import { useState } from 'react';
+import { colors } from './utils/constant';
 import { GameScreen } from './screens/GameScreen';
-import { colors } from './constants/colors';
 
 export default function App() {
-  const [userNumber, setUserNumber] = useState<string | number | null>(null);
+  const [userNumber, setUserNumber] = useState<number | null>(null);
 
-  const pickedNumberHandler = (pickedNumber: string | number) => {
+  const pickedNumberHandler = (pickedNumber: number) => {
     setUserNumber(pickedNumber);
   };
 
   let screen = <StartScreenGame onPickNumber={pickedNumberHandler} />;
 
   if (userNumber) {
-    screen = <GameScreen />;
+    screen = <GameScreen userNumber={userNumber} />;
   }
 
   return (
