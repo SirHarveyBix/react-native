@@ -1,10 +1,13 @@
 import { StyleSheet } from 'react-native';
-import { colors } from '../utils/constant';
+import { colors, deviceHeight } from '../utils/constant';
 
 export const styles = StyleSheet.create({
+  screen: {
+    flex: 1,
+  },
   rootContainer: {
     flex: 1,
-    marginTop: 100,
+    marginTop: deviceHeight < 380 ? 30 : 100,
     alignItems: 'center',
   },
   instructionText: {

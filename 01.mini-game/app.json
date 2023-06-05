@@ -1,9 +1,9 @@
 {
   "expo": {
-    "name": "01.mini-game",
-    "slug": "01.mini-game",
-    "version": "1.0.0",
-    "orientation": "portrait",
+    "name": "mini-game",
+    "slug": "mini-game",
+    "version": "1.1.0",
+    "orientation": "default",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
