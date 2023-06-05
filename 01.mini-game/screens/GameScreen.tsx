@@ -8,12 +8,13 @@ import { PrimaryButton } from '../components/ui/PrimaryButton';
 import { Card } from '../components/ui/Card';
 import { InstructionText } from '../components/ui/InstructionText';
 import { Ionicons } from '@expo/vector-icons';
+import { GuessLogItem } from '../components/game/GuessLogItem';
 let minBoundary = 1;
 let maxBoundary = 100;
 
 type GameScreenProps = {
   userNumber: number;
-  onGameOver: () => void;
+  onGameOver: (numberOfRounds: number) => void;
 };
 
 export const GameScreen = ({ userNumber, onGameOver }: GameScreenProps) => {
@@ -23,7 +24,7 @@ export const GameScreen = ({ userNumber, onGameOver }: GameScreenProps) => {
 
   useEffect(() => {
     if (currentGuess === userNumber) {
-      onGameOver();
+      onGameOver(guessRounds.length);
     }
   }, [currentGuess, userNumber, onGameOver]);
 
@@ -57,6 +58,7 @@ export const GameScreen = ({ userNumber, onGameOver }: GameScreenProps) => {
     setGuessRounds((prevGuessRounds) => [newRandomNumber, ...prevGuessRounds]);
   };
 
+  const guessRoundsListLength = guessRounds.length;
   return (
     <View style={styles.screen}>
       <Title>Opponent's Guess</Title>
@@ -78,10 +80,15 @@ export const GameScreen = ({ userNumber, onGameOver }: GameScreenProps) => {
           </View>
         </View>
       </Card>
-      <View>
+      <View style={styles.listContainer}>
         <FlatList
           data={guessRounds}
-          renderItem={(itemData) => <Text>{itemData.item}</Text>}
+          renderItem={(itemData) => (
+            <GuessLogItem
+              guess={itemData.item}
+              roundNumber={guessRoundsListLength - itemData.index}
+            />
+          )}
           keyExtractor={(item) => String(item)}
         />
       </View>
