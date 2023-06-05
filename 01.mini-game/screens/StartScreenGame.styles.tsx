@@ -2,24 +2,14 @@ import { StyleSheet } from 'react-native';
 import { colors } from '../utils/constant';
 
 export const styles = StyleSheet.create({
-  inputContainer: {
-    justifyContent: 'center',
-    alignItems: 'center',
+  rootContainer: {
+    flex: 1,
     marginTop: 100,
-    marginHorizontal: 24,
-    padding: 16,
-    backgroundColor: colors.primary800,
-    borderRadius: 8,
-    elevation: 4, // shadow for android
-
-    // shadow for iOs
-    shadowColor: 'black',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowRadius: 6,
-    shadowOpacity: 0.25,
+    alignItems: 'center',
+  },
+  instructionText: {
+    color: colors.accent500,
+    fontSize: 24,
   },
   numberInput: {
     height: 50,
