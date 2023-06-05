@@ -1,12 +1,14 @@
-import { StyleSheet } from 'react-native';
+import { Dimensions, StyleSheet } from 'react-native';
 import { colors } from '../../utils/constant';
+
+const deviceWidth = Dimensions.get('window').width;
 
 export const styles = StyleSheet.create({
   container: {
     borderWidth: 4,
     borderColor: colors.accent500,
-    padding: 24,
-    margin: 24,
+    padding: deviceWidth < 380 ? 12 : 24,
+    margin: deviceWidth < 380 ? 12 : 24,
     borderRadius: 8,
     alignItems: 'center',
     justifyContent: 'center',
@@ -14,6 +16,6 @@ export const styles = StyleSheet.create({
   numberText: {
     fontFamily: 'open-sans-bold',
     color: colors.accent500,
-    fontSize: 36,
+    fontSize: deviceWidth < 380 ? 28 : 36,
   },
 });

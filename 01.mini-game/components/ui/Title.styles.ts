@@ -11,5 +11,6 @@ export const styles = StyleSheet.create({
     borderColor: 'white',
     borderRadius: 8,
     padding: 12,
+    maxWidth: '80%',
   },
 });
