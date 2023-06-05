@@ -5,4 +5,13 @@ export const styles = StyleSheet.create({
     flex: 1,
     padding: 24,
   },
+  instructionText: {
+    marginBottom: 12,
+  },
+  buttonsContainer: {
+    flexDirection: 'row',
+  },
+  buttonContainer: {
+    flex: 1,
+  },
 });

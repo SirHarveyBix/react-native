@@ -5,9 +5,9 @@ import { useEffect, useState } from 'react';
 import { NumberContainer } from '../components/game/NumberContainer';
 import { generateRandomBetwen } from '../utils/utils';
 import { PrimaryButton } from '../components/ui/PrimaryButton';
-import { Card } from '../components/ui/card';
+import { Card } from '../components/ui/Card';
 import { InstructionText } from '../components/ui/InstructionText';
-
+import { Ionicons } from '@expo/vector-icons';
 let minBoundary = 1;
 let maxBoundary = 100;
 
@@ -55,14 +55,20 @@ export const GameScreen = ({ userNumber, onGameOver }: GameScreenProps) => {
       <Title>Opponent's Guess</Title>
       <NumberContainer>{currentGuess}</NumberContainer>
       <Card>
-        <InstructionText>Higher or Lower ?</InstructionText>
-        <View>
-          <PrimaryButton onPress={nextGuessHandler.bind(this, 'greater')}>
-            +
-          </PrimaryButton>
-          <PrimaryButton onPress={nextGuessHandler.bind(this, 'lower')}>
-            -
-          </PrimaryButton>
+        <InstructionText style={styles.instructionText}>
+          Higher or Lower ?
+        </InstructionText>
+        <View style={styles.buttonsContainer}>
+          <View style={styles.buttonContainer}>
+            <PrimaryButton onPress={nextGuessHandler.bind(this, 'greater')}>
+              <Ionicons name="md-add" size={24} color={'white'} />
+            </PrimaryButton>
+          </View>
+          <View style={styles.buttonContainer}>
+            <PrimaryButton onPress={nextGuessHandler.bind(this, 'lower')}>
+              <Ionicons name="md-remove" size={24} color={'white'} />
+            </PrimaryButton>
+          </View>
         </View>
       </Card>
     </View>

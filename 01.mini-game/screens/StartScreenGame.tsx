@@ -3,8 +3,8 @@ import { styles } from './StartScreenGame.styles';
 import { useState } from 'react';
 import { PrimaryButton } from '../components/ui/PrimaryButton';
 import { Title } from '../components/ui/Title';
-import { Card } from '../components/ui/card';
 import { InstructionText } from '../components/ui/InstructionText';
+import { Card } from '../components/ui/Card';
 
 type StartScreenGameProps = {
   onPickNumber: (pickedNumber: number) => void;

@@ -12,8 +12,8 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   numberText: {
+    fontFamily: 'open-sans-bold',
     color: colors.accent500,
     fontSize: 36,
-    fontWeight: 'bold',
   },
 });
