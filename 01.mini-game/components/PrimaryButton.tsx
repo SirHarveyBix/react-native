@@ -3,17 +3,14 @@ import { styles } from './PrimaryButton.styles';
 
 type PropsPrimaryButton = {
   children: string | JSX.Element;
+  onPress: () => void;
 };
 
-export const PrimaryButton = ({ children }: PropsPrimaryButton) => {
-  const pressHandler = () => {
-    console.log('Pressed !');
-  };
-
+export const PrimaryButton = ({ children, onPress }: PropsPrimaryButton) => {
   return (
     <View style={styles.buttonOuterContainer}>
       <Pressable
-        onPress={pressHandler}
+        onPress={onPress}
         style={({ pressed }) =>
           pressed
             ? [styles.buttonInnerContainer, styles.pressed]
