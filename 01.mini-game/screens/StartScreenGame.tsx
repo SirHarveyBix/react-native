@@ -3,7 +3,10 @@ import { PrimaryButton } from '../components/PrimaryButton';
 import { styles } from './StartScreenGame.styles';
 import { useState } from 'react';
 
-export const StartScreenGame = () => {
+type StartScreenGameProps = {
+  onPickNumber: (pickedNumber: string | number) => void;
+};
+export const StartScreenGame = ({ onPickNumber }: StartScreenGameProps) => {
   const [enteredNumber, setEnteredNumber] = useState('');
 
   const numberInputHandler = (enteredText: string) => {
@@ -19,7 +22,7 @@ export const StartScreenGame = () => {
       ]);
       return;
     }
-    console.log('That is valid.');
+    onPickNumber(chonsenNumnber);
   };
 
   const resetInputHandler = () => {
