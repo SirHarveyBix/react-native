@@ -1,7 +1,5 @@
-import { Dimensions, StyleSheet } from 'react-native';
-import { colors } from '../../utils/constant';
-
-const deviceWidth = Dimensions.get('window').width;
+import { StyleSheet } from 'react-native';
+import { colors, deviceWidth } from '../../utils/constant';
 
 export const styles = StyleSheet.create({
   cardContainer: {
