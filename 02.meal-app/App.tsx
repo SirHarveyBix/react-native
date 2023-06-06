@@ -3,6 +3,7 @@ import { CategoriesScreen } from './screens/CategoriesScreen';
 import { StatusBar } from 'expo-status-bar';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { MealsOverviewScreen } from './screens/MealsOverviewScreen';
+import { CATEGORIES } from './data/dummy-data';
 
 export type RootStackParamList = {
   MealsCategories: undefined;
@@ -14,21 +15,31 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 export default function App() {
   return (
     <>
-      <StatusBar style="dark" />
+      <StatusBar style="light" />
       <NavigationContainer>
-        <Stack.Navigator>
-          {/* first child is initial screen 
-              or : <Stack.Navigator initialRouteName="MealsCategories">
-          */}
+        <Stack.Navigator
+          screenOptions={{
+            headerStyle: { backgroundColor: '#351401' },
+            headerTintColor: 'white',
+            contentStyle: { backgroundColor: '#3f2f25' },
+          }}
+        >
           <Stack.Screen
             name="MealsCategories"
             component={CategoriesScreen}
-            options={{ title: 'Meals Categories' }}
+            options={{ title: 'All Categories' }}
           />
           <Stack.Screen
             name="MealsOverview"
             component={MealsOverviewScreen}
-            options={{ title: 'Meals Overview' }}
+
+            /* title is set directly in the component with : setOptions */
+            // options={({ route }) => {
+            //   const category = CATEGORIES.find(
+            //     (category) => category.id === route.params.categoryId
+            //   );
+            //   return { title: category?.title };
+            // }}
           />
         </Stack.Navigator>
       </NavigationContainer>
