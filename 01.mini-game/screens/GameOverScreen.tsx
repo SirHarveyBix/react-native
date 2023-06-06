@@ -1,4 +1,10 @@
-import { Image, Text, View } from 'react-native';
+import {
+  Image,
+  ScrollView,
+  Text,
+  View,
+  useWindowDimensions,
+} from 'react-native';
 import { Title } from '../components/ui/Title';
 import { styles } from './GameOverScreen.style';
 import { PrimaryButton } from '../components/ui/PrimaryButton';
@@ -14,21 +20,39 @@ export const GameOverScreen = ({
   userNumber,
   onStartNewGame,
 }: GameOverScreenProps) => {
+  const { width, height } = useWindowDimensions();
+  let imageSize = 300;
+  if (width < 380) {
+    imageSize = 150;
+  }
+
+  if (width < 400) {
+    imageSize = 80;
+  }
+
+  const imageStyle = {
+    width: imageSize,
+    height: imageSize,
+    borderRadius: imageSize / 2,
+  };
+
   return (
-    <View style={styles.rootContainer}>
-      <Title>GAME OVER!</Title>
-      <View style={styles.imageContainer}>
-        <Image
-          source={require('../assets/images/success.png')}
-          style={styles.image}
-        />
+    <ScrollView style={styles.screen}>
+      <View style={styles.rootContainer}>
+        <Title>GAME OVER!</Title>
+        <View style={[styles.imageContainer, imageStyle]}>
+          <Image
+            source={require('../assets/images/success.png')}
+            style={styles.image}
+          />
+        </View>
+        <Text style={styles.summaryText}>
+          Your Phone needed <Text style={styles.highlight}>{roundNumber}</Text>{' '}
+          rounds to guess the number{' '}
+          <Text style={styles.highlight}>{userNumber}</Text>
+        </Text>
+        <PrimaryButton onPress={onStartNewGame}>Start New Game</PrimaryButton>
       </View>
-      <Text style={styles.summaryText}>
-        Your Phone needed <Text style={styles.highlight}>{roundNumber}</Text>{' '}
-        rounds to guess the number{' '}
-        <Text style={styles.highlight}>{userNumber}</Text>
-      </Text>
-      <PrimaryButton onPress={onStartNewGame}>Start New Game</PrimaryButton>
-    </View>
+    </ScrollView>
   );
 };
