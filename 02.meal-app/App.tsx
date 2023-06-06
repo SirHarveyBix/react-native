@@ -3,8 +3,8 @@ import { CategoriesScreen } from './screens/CategoriesScreen';
 import { StatusBar } from 'expo-status-bar';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { MealsOverviewScreen } from './screens/MealsOverviewScreen';
-import { CATEGORIES } from './data/dummy-data';
 import { MealsDetailsScreen } from './screens/MealsDetailsScreen';
+import { Button, Text } from 'react-native';
 
 export type RootStackParamList = {
   MealsCategories: undefined;
@@ -34,7 +34,6 @@ export default function App() {
           <Stack.Screen
             name="MealsOverview"
             component={MealsOverviewScreen}
-
             /* title is set directly in the component with : setOptions */
             // options={({ route }) => {
             //   const category = CATEGORIES.find(
