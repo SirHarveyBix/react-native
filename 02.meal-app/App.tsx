@@ -4,10 +4,12 @@ import { StatusBar } from 'expo-status-bar';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { MealsOverviewScreen } from './screens/MealsOverviewScreen';
 import { CATEGORIES } from './data/dummy-data';
+import { MealsDetailsScreen } from './screens/MealsDetailsScreen';
 
 export type RootStackParamList = {
   MealsCategories: undefined;
   MealsOverview: { categoryId?: string };
+  MealDetail: { mealId: string };
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -41,6 +43,7 @@ export default function App() {
             //   return { title: category?.title };
             // }}
           />
+          <Stack.Screen name="MealDetail" component={MealsDetailsScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </>
