@@ -1,13 +1,18 @@
+import { useDrawerStatus } from '@react-navigation/drawer';
 import { useNavigation } from '@react-navigation/native';
+import { DrawerActions } from '@react-navigation/native';
 import { View, Text, StyleSheet, Button } from 'react-native';
 
 function UserScreen() {
   const navigation = useNavigation();
-  //TODO find Correct lib / type
-  const drawerNavigation = navigation.getParent('LeftDrawer');
+  const isDrawerOpen = useDrawerStatus() === 'open';
 
   const openDrawerHandler = () => {
-    drawerNavigation?.openDrawer();
+    if (isDrawerOpen == null) {
+      navigation.dispatch(DrawerActions.openDrawer());
+    } else {
+      navigation.dispatch(DrawerActions.closeDrawer());
+    }
   };
 
   return (
@@ -15,7 +20,10 @@ function UserScreen() {
       <Text>
         This is the <Text style={styles.highlight}>"User"</Text> screen!
       </Text>
-      <Button title="open Drawer" onPress={openDrawerHandler} />
+      <Button
+        title={isDrawerOpen ? 'Close Drawer' : 'Open Drawer'}
+        onPress={openDrawerHandler}
+      />
     </View>
   );
 }
