@@ -1,11 +1,21 @@
-import { View, Text, Button, StyleSheet } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { View, Text, StyleSheet, Button } from 'react-native';
 
 function UserScreen() {
+  const navigation = useNavigation();
+  //TODO find Correct lib / type
+  const drawerNavigation = navigation.getParent('LeftDrawer');
+
+  const openDrawerHandler = () => {
+    drawerNavigation?.openDrawer();
+  };
+
   return (
     <View style={styles.rootContainer}>
       <Text>
         This is the <Text style={styles.highlight}>"User"</Text> screen!
       </Text>
+      <Button title="open Drawer" onPress={openDrawerHandler} />
     </View>
   );
 }
