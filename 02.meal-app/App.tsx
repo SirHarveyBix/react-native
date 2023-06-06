@@ -6,7 +6,7 @@ import { MealsOverviewScreen } from './screens/MealsOverviewScreen';
 
 export type RootStackParamList = {
   MealsCategories: undefined;
-  MealsOverview: undefined;
+  MealsOverview: { categoryId?: string };
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();

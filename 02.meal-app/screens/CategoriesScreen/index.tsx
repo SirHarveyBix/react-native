@@ -5,11 +5,11 @@ import Category from '../../models/category';
 import { useNavigation } from '@react-navigation/native';
 
 export const CategoriesScreen = () => {
-  const navigation = useNavigation();
+  const { navigate } = useNavigation();
 
   const renderCategoryItem = ({ item }: { item: Category }) => {
     const pressHandler = () => {
-      navigation.navigate('MealsOverview');
+      navigate('MealsOverview', { categoryId: item.id });
     };
 
     return (
