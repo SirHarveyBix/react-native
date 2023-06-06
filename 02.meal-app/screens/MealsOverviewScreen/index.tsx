@@ -16,7 +16,7 @@ export const MealsOverviewScreen = () => {
   );
 
   const renderMealItem = ({ item }: { item: Meal }) => {
-    return <MealItem title={item.title} />;
+    return <MealItem {...item} />;
   };
   return (
     <View style={styles.container}>
