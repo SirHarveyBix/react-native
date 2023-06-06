@@ -8,6 +8,7 @@ import { GameScreen } from './screens/GameScreen';
 import { GameOverScreen } from './screens/GameOverScreen';
 import * as SplashScreen from 'expo-splash-screen';
 import * as Font from 'expo-font';
+import { StatusBar } from 'expo-status-bar';
 
 export default function App() {
   const [appIsReady, setAppIsReady] = useState(false);
@@ -79,19 +80,22 @@ export default function App() {
   }
 
   return (
-    <LinearGradient
-      style={styles.rootScreen}
-      colors={[colors.primary700, colors.accent500]}
-      onLayout={onLayoutRootView}
-    >
-      <ImageBackground
+    <>
+      <StatusBar style="light" />
+      <LinearGradient
         style={styles.rootScreen}
-        source={require('./assets/images/background.png')}
-        imageStyle={styles.backgroudImage}
-        resizeMode="cover"
+        colors={[colors.primary700, colors.accent500]}
+        onLayout={onLayoutRootView}
       >
-        <SafeAreaView style={styles.rootScreen}>{screen}</SafeAreaView>
-      </ImageBackground>
-    </LinearGradient>
+        <ImageBackground
+          style={styles.rootScreen}
+          source={require('./assets/images/background.png')}
+          imageStyle={styles.backgroudImage}
+          resizeMode="cover"
+        >
+          <SafeAreaView style={styles.rootScreen}>{screen}</SafeAreaView>
+        </ImageBackground>
+      </LinearGradient>
+    </>
   );
 }
