@@ -1,8 +1,17 @@
 import { Pressable, Text, View } from 'react-native';
-import Category from '../../models/category';
 import { styles } from './style';
 
-export const CategoryGridTile = ({ title, color }: Partial<Category>) => {
+type CategoryGridTileProps = {
+  title: string;
+  color: string;
+  onPress: () => void;
+};
+
+export const CategoryGridTile = ({
+  title,
+  color,
+  onPress,
+}: CategoryGridTileProps) => {
   return (
     <View style={styles.gridItem}>
       <Pressable
@@ -11,6 +20,7 @@ export const CategoryGridTile = ({ title, color }: Partial<Category>) => {
           styles.button,
           pressed ? styles.buttonPressed : null,
         ]}
+        onPress={onPress}
       >
         <View style={[styles.innerContainer, { backgroundColor: color }]}>
           <Text style={styles.title}>{title}</Text>
