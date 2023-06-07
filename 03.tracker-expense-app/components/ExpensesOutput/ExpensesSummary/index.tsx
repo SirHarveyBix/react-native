@@ -1,11 +1,6 @@
 import { Text, View } from 'react-native';
-
-type ExpensesType = {
-  id: string;
-  description: string;
-  amount: number;
-  date: Date;
-};
+import { ExpensesType } from '..';
+import styles from './styles';
 
 type ExpensesSummaryProps = {
   expenses: ExpensesType[];
@@ -18,9 +13,9 @@ const ExpensesSummary = ({ expenses, periodName }: ExpensesSummaryProps) => {
   }, 0);
 
   return (
-    <View>
-      <Text>{periodName}</Text>
-      <Text>${expensesSum.toFixed(2)}</Text>
+    <View style={styles.container}>
+      <Text style={styles.period}>{periodName}</Text>
+      <Text style={styles.sum}>${expensesSum.toFixed(2)}</Text>
     </View>
   );
 };

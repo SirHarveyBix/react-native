@@ -1,8 +1,21 @@
 import { View } from 'react-native';
 import ExpensesSummary from './ExpensesSummary';
 import ExpensesList from './ExpensesList';
+import styles from './styles';
 
-const DUMMY_EXPENSES = [
+export type ExpensesType = {
+  id: string;
+  description: string;
+  amount: number;
+  date: Date;
+};
+
+type ExpensesOutputProps = {
+  expensesPeriod: string;
+  expenses: ExpensesType[];
+};
+
+const DUMMY_EXPENSES: ExpensesType[] = [
   {
     id: 'e1',
     description: 'A pair of shoes',
@@ -28,18 +41,18 @@ const DUMMY_EXPENSES = [
     date: new Date('2022-05-20'),
   },
   {
-    id: 'e4',
+    id: 'e5',
     description: 'book',
     amount: 19.79,
     date: new Date('2022-02-14'),
   },
 ];
 
-const ExpensesOutput = ({ expenses, expensesPeriod }: any) => {
+const ExpensesOutput = ({ expenses, expensesPeriod }: ExpensesOutputProps) => {
   return (
-    <View>
+    <View style={styles.container}>
       <ExpensesSummary expenses={DUMMY_EXPENSES} periodName={expensesPeriod} />
-      <ExpensesList items={expenses} />
+      <ExpensesList expenses={DUMMY_EXPENSES} />
     </View>
   );
 };
