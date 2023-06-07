@@ -1,5 +1,8 @@
 {
   "compilerOptions": {
+    "types": [
+      "react-native"
+    ],
     "target": "esnext",
     "jsx": "react-native",
     "module": "commonjs",
@@ -16,6 +19,5 @@
   "exclude": [
     "node_modules",
     "babel.config.js",
-    "metro.config.js",
   ]
 }
