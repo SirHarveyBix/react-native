@@ -3,7 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { StatusBar } from 'expo-status-bar';
 import ManageExpense from './screens/ManageExpense';
-import RecentExpenses from './screens/MealsDetailsScreen';
+import RecentExpenses from './screens/RecentExpenses';
 import AllExpenses from './screens/AllExpenses';
 import { Ionicons } from '@expo/vector-icons';
 import { GlobalStyles } from './utils/constant';
@@ -54,6 +54,7 @@ export default function App() {
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen
+            // bottom tabs
             name="ExpenseOverview"
             component={ExpenseOverview}
             options={{ headerShown: false }}
