@@ -1,5 +1,5 @@
 import { Image, Pressable, Text, View } from 'react-native';
-import { styles } from './style';
+import { styles } from './styles';
 import Meal from '../../models/meal';
 import { useNavigation } from '@react-navigation/native';
 import { MealDetails } from '../MealDetails';
