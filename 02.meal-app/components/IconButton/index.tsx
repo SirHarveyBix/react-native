@@ -4,7 +4,7 @@ import { Ionicons } from '@expo/vector-icons';
 
 type IconButtonProps = {
   onPress: () => void;
-  icon: 'star' | 'add';
+  icon: 'star' | 'star-outline';
   color: string;
 };
 
