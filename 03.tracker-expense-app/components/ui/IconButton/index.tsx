@@ -4,7 +4,7 @@ import { Ionicons } from '@expo/vector-icons';
 import styles from './styles';
 
 type IconButtonProps = {
-  icon: 'add';
+  icon: 'add' | 'trash';
   size: number;
   color: string | undefined;
   onPress: () => void;
