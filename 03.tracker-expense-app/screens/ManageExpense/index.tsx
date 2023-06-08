@@ -4,14 +4,18 @@ import { useContext, useLayoutEffect } from 'react';
 import IconButton from '../../components/ui/IconButton';
 import { GlobalStyles } from '../../utils/constant';
 import styles from './styles';
-import { ExpensesContext } from '../../context/expense.context';
+import { Expense, ExpensesContext } from '../../context/expense.context';
 import ExpenseForm from '../../components/ExpenseForm';
 
 const ManageExpense: RouteParams<'ManageExpense'> = ({ route, navigation }) => {
   const editedExpenseId = route.params?.expenseId;
   const isEditing = !!editedExpenseId;
-  const { addExpense, deleteExpense, updateExpense } =
+  const { addExpense, deleteExpense, updateExpense, expenses } =
     useContext(ExpensesContext);
+
+  const selectedExpense = expenses.find(
+    (expense) => expense.id === editedExpenseId
+  );
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -30,20 +34,11 @@ const ManageExpense: RouteParams<'ManageExpense'> = ({ route, navigation }) => {
     navigation.goBack();
   };
 
-  const confirmHandler = () => {
+  const confirmHandler = (expenseData: Expense) => {
     if (isEditing && editedExpenseId) {
-      updateExpense(editedExpenseId, {
-        description: 'test',
-        amount: 12,
-        date: new Date('2023-06-5'),
-      });
+      updateExpense(editedExpenseId, expenseData);
     } else {
-      addExpense({
-        id: '2',
-        description: 'test',
-        amount: 12,
-        date: new Date('2023-06-5'),
-      });
+      addExpense(expenseData);
     }
 
     navigation.goBack();
@@ -55,6 +50,7 @@ const ManageExpense: RouteParams<'ManageExpense'> = ({ route, navigation }) => {
         onCancel={cancelHandler}
         onSubmit={confirmHandler}
         submitButtonLabel={isEditing ? 'update' : 'Add'}
+        defaultValue={selectedExpense}
       />
 
       {isEditing && (

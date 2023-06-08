@@ -3,22 +3,26 @@ import styles from './styles';
 import Input from './Input';
 import { useState } from 'react';
 import Button from '../ui/Button';
+import { Expense } from '../../context/expense.context';
+import { getFormatedDate } from '../../utils/utils';
 
 type ExpenseFormProps = {
   onCancel: () => void;
-  onSubmit: () => void;
+  onSubmit: (expenseData: Expense) => void;
   submitButtonLabel: string;
+  defaultValue: Expense | undefined;
 };
 
 const ExpenseForm = ({
   onCancel,
   onSubmit,
   submitButtonLabel,
+  defaultValue,
 }: ExpenseFormProps) => {
   const [inputValues, setInputValues] = useState({
-    amount: '',
-    date: '',
-    description: '',
+    amount: defaultValue ? String(defaultValue.amount) : '',
+    date: defaultValue ? getFormatedDate(defaultValue.date) : '',
+    description: defaultValue ? defaultValue.description : '',
   });
 
   const inputChangedHandler = (
@@ -28,6 +32,15 @@ const ExpenseForm = ({
     setInputValues((currentInputValues) => {
       return { ...currentInputValues, [inputIdentifier]: enteredValue };
     });
+  };
+
+  const submitHandmer = () => {
+    const expenseData = {
+      amount: Number(inputValues.amount),
+      date: new Date(inputValues.date),
+      description: inputValues.description,
+    };
+    onSubmit(expenseData);
   };
 
   return (
@@ -66,7 +79,7 @@ const ExpenseForm = ({
         <Button mode="flat" onPress={onCancel} style={styles.button}>
           Cancel
         </Button>
-        <Button onPress={onSubmit} style={styles.button}>
+        <Button onPress={submitHandmer} style={styles.button}>
           {submitButtonLabel}
         </Button>
       </View>
