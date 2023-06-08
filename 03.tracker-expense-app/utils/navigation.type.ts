@@ -1,9 +1,10 @@
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RouteProp } from '@react-navigation/native';
 
 export type RootStackParamList = {
-  ManageExpense: undefined;
+  ManageExpense: undefined | { expenseId: string };
   ExpenseOverview: undefined;
-  [key: string]: undefined;
+  [key: string]: undefined | { [param: string]: string | number };
 };
 
 export type UseNavigationHookProp =
@@ -14,3 +15,8 @@ export type NavigationParam = {
     navigate: (param: keyof RootStackParamList) => void;
   };
 };
+
+export type RouteParams<RouteName extends keyof RootStackParamList> = React.FC<{
+  navigation: NativeStackNavigationProp<RootStackParamList, RouteName>;
+  route: RouteProp<RootStackParamList, RouteName>;
+}>;
