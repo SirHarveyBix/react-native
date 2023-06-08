@@ -2,7 +2,7 @@ import React, { ReactNode, createContext, useReducer } from 'react';
 import { DUMMY_EXPENSES } from '../utils/constant';
 
 export type Expense = {
-  id: string;
+  id?: string;
   description: string;
   amount: number;
   date: Date;
