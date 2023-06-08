@@ -4,7 +4,7 @@ import { GlobalStyles } from '../../../utils/constant';
 const styles = StyleSheet.create({
   inputContainer: { marginHorizontal: 4, marginVertical: 8 },
   label: {
-    fontSize: 16,
+    fontSize: 12,
     color: GlobalStyles.colors.primary100,
     marginBottom: 4,
   },

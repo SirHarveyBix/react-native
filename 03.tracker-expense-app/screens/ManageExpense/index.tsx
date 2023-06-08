@@ -4,7 +4,6 @@ import { useContext, useLayoutEffect } from 'react';
 import IconButton from '../../components/ui/IconButton';
 import { GlobalStyles } from '../../utils/constant';
 import styles from './styles';
-import Button from '../../components/ui/Button';
 import { ExpensesContext } from '../../context/expense.context';
 import ExpenseForm from '../../components/ExpenseForm';
 
@@ -52,15 +51,12 @@ const ManageExpense: RouteParams<'ManageExpense'> = ({ route, navigation }) => {
 
   return (
     <View style={styles.container}>
-      <ExpenseForm />
-      <View style={styles.buttons}>
-        <Button mode="flat" onPress={cancelHandler} style={styles.button}>
-          Cancel
-        </Button>
-        <Button onPress={confirmHandler} style={styles.button}>
-          {isEditing ? 'update' : 'Add'}
-        </Button>
-      </View>
+      <ExpenseForm
+        onCancel={cancelHandler}
+        onSubmit={confirmHandler}
+        submitButtonLabel={isEditing ? 'update' : 'Add'}
+      />
+
       {isEditing && (
         <View style={styles.deleteContainer}>
           <IconButton
