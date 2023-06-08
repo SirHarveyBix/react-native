@@ -1,11 +1,11 @@
 import { Pressable, Text, View } from 'react-native';
-import { ExpensesType } from '..';
 import styles from './styles';
 import { getFormatedDate } from '../../../utils/utils';
 import { useNavigation } from '@react-navigation/native';
 import { UseNavigationHookProp } from '../../../utils/navigation.type';
+import { Expense } from '../../../context/expense.context';
 
-type ExpenseItemProps = ExpensesType;
+type ExpenseItemProps = Expense;
 
 const ExpenseItem = ({ id, description, amount, date }: ExpenseItemProps) => {
   const navigation = useNavigation<UseNavigationHookProp>();

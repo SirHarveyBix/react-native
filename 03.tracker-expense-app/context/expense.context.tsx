@@ -58,7 +58,7 @@ type ExpensesContextProviderProps = {
   children: ReactNode;
 };
 
-const ExpensesContextProvider = ({
+export const ExpensesContextProvider = ({
   children,
 }: ExpensesContextProviderProps) => {
   const [expensesState, dispatch] = useReducer<
