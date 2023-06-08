@@ -2,12 +2,12 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { StatusBar } from 'expo-status-bar';
-import ManageExpense from './screens/ManageExpense';
-import RecentExpenses from './screens/RecentExpenses';
-import AllExpenses from './screens/AllExpenses';
 import { Ionicons } from '@expo/vector-icons';
 import { GlobalStyles } from './utils/constant';
 import IconButton from './components/ui/IconButton';
+import ManageExpense from './screens/ManageExpense';
+import RecentExpenses from './screens/RecentExpenses';
+import AllExpenses from './screens/AllExpenses';
 import { RootStackParamList } from './utils/navigation.type';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -62,14 +62,25 @@ export default function App() {
     <>
       <StatusBar style="auto" />
       <NavigationContainer>
-        <Stack.Navigator>
+        <Stack.Navigator
+          screenOptions={{
+            headerStyle: { backgroundColor: GlobalStyles.colors.primary500 },
+            headerTintColor: 'white',
+          }}
+        >
           <Stack.Screen
             // bottom tabs
             name="ExpenseOverview"
             component={ExpenseOverview}
             options={{ headerShown: false }}
           />
-          <Stack.Screen name="ManageExpense" component={ManageExpense} />
+          <Stack.Screen
+            name="ManageExpense"
+            component={ManageExpense}
+            options={{
+              presentation: 'modal',
+            }}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </>

@@ -1,4 +1,4 @@
-import { FlatList, Pressable, Text, View } from 'react-native';
+import { Pressable, Text, View } from 'react-native';
 import { ExpensesType } from '..';
 import styles from './styles';
 import { getFormatedDate } from '../../../utils/utils';
@@ -7,10 +7,10 @@ import { UseNavigationHookProp } from '../../../utils/navigation.type';
 
 type ExpenseItemProps = ExpensesType;
 
-const ExpenseItem = ({ description, amount, date }: ExpenseItemProps) => {
+const ExpenseItem = ({ id, description, amount, date }: ExpenseItemProps) => {
   const navigation = useNavigation<UseNavigationHookProp>();
   const expensePressHandler = () => {
-    navigation.navigate('ManageExpense');
+    navigation.navigate('ManageExpense', { expenseId: id });
   };
 
   return (
