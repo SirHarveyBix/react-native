@@ -1,6 +1,7 @@
 import { Text } from 'react-native';
+import { NavigationParam } from '../../utils/navigation.type';
 
-const ManageExpense = () => {
+const ManageExpense = ({ navigation }: NavigationParam) => {
   return <Text>ManageExpense Screen</Text>;
 };
 
