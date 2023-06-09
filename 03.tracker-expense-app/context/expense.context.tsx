@@ -32,10 +32,10 @@ export const ExpensesContext = createContext<ContextState>({
 const expensesReducer: React.Reducer<Expense[], Action> = (state, action) => {
   switch (action.type) {
     case 'ADD':
-      const id = String(new Date()) + String(Math.random());
-      return [{ ...action.payload, id: id }, ...state];
+      return [action.payload, ...state];
     case 'SET':
-      return action.payload;
+      const inverted = action.payload.reverse();
+      return inverted;
     case 'UPDATE':
       const { data } = action.payload;
       const updatablExpenseIndex = state.findIndex(

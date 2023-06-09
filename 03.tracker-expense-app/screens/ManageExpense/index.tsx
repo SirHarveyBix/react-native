@@ -35,13 +35,13 @@ const ManageExpense: RouteParams<'ManageExpense'> = ({ route, navigation }) => {
     navigation.goBack();
   };
 
-  const confirmHandler = (expenseData: Expense) => {
+  const confirmHandler = async (expenseData: Expense) => {
     if (isEditing && editedExpenseId) {
       updateExpense(editedExpenseId, expenseData);
     } else {
-      addExpense(expenseData);
+      const id = await storeExpense(expenseData);
+      addExpense({ ...expenseData, id: id });
     }
-    storeExpense(expenseData);
     navigation.goBack();
   };
 

@@ -4,8 +4,13 @@ import { Expense } from '../context/expense.context';
 const BACKEND_URL =
   'https://react-native-course-edc24-default-rtdb.europe-west1.firebasedatabase.app';
 
-export const storeExpense = (expenseData: Expense) => {
-  axios.post(`${BACKEND_URL}/expenses.json`, expenseData);
+export const storeExpense = async (expenseData: Expense) => {
+  const response = await axios.post(
+    `${BACKEND_URL}/expenses.json`,
+    expenseData
+  );
+  const id = response.data.name;
+  return id;
 };
 
 export const fetchExpenses = async (): Promise<Expense[]> => {
