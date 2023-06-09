@@ -3,10 +3,11 @@ import { Alert, View } from 'react-native';
 import styles from './styles';
 import FlatButton from '../../ui/Flat Button';
 import AuthForm from '../AuthForm';
+import { UserInputs } from '../../../utils/types';
 
 type AuthContentProps = {
   isLogin: boolean;
-  onAuthenticate: ({ email, password }: { [key: string]: string }) => void;
+  onAuthenticate: ({ email, password }: Partial<UserInputs>) => void;
 };
 
 const AuthContent = ({ isLogin, onAuthenticate }: AuthContentProps) => {
@@ -21,12 +22,7 @@ const AuthContent = ({ isLogin, onAuthenticate }: AuthContentProps) => {
     // Todo
   }
 
-  function submitHandler(credentials: {
-    email: string;
-    confirmEmail: string;
-    password: string;
-    confirmPassword: string;
-  }) {
+  function submitHandler(credentials: UserInputs) {
     let { email, confirmEmail, password, confirmPassword } = credentials;
 
     email = email.trim();

@@ -3,13 +3,7 @@ import styles from './styles';
 import { useState } from 'react';
 import Input from '../Input';
 import Button from '../../ui/Button';
-
-type UserInputs = {
-  email: string;
-  confirmEmail: string;
-  password: string;
-  confirmPassword: string;
-};
+import { UserInputs } from '../../../utils/types';
 
 type Credentials = {
   email: boolean;
@@ -20,7 +14,7 @@ type Credentials = {
 
 type AuthFormProps = {
   isLogin: boolean;
-  onSubmit: (input: UserInputs) => void;
+  onSubmit: (credentials: UserInputs) => void;
   credentialsInvalid: Credentials;
 };
 
