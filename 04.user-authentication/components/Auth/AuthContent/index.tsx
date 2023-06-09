@@ -3,7 +3,8 @@ import { Alert, View } from 'react-native';
 import styles from './styles';
 import FlatButton from '../../ui/Flat Button';
 import AuthForm from '../AuthForm';
-import { UserInputs } from '../../../utils/types';
+import { UseNavigationHookProp, UserInputs } from '../../../utils/types';
+import { useNavigation } from '@react-navigation/native';
 
 type AuthContentProps = {
   isLogin: boolean;
@@ -11,6 +12,7 @@ type AuthContentProps = {
 };
 
 const AuthContent = ({ isLogin, onAuthenticate }: AuthContentProps) => {
+  const { replace } = useNavigation<UseNavigationHookProp>();
   const [credentialsInvalid, setCredentialsInvalid] = useState({
     email: false,
     password: false,
@@ -19,7 +21,11 @@ const AuthContent = ({ isLogin, onAuthenticate }: AuthContentProps) => {
   });
 
   function switchAuthModeHandler() {
-    // Todo
+    if (isLogin) {
+      replace('Signup');
+    } else {
+      replace('Login');
+    }
   }
 
   function submitHandler(credentials: UserInputs) {
