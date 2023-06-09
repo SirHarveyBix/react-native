@@ -1,21 +1,27 @@
-import { Pressable, View } from 'react-native';
+import { View } from 'react-native';
 import styles from './styles';
-import { Ionicons } from '@expo/vector-icons';
 import { useState } from 'react';
 import Input from '../Input';
 import Button from '../../ui/Button';
 
 type UserInputs = {
-  email: any;
-  confirmEmail: any;
-  password: any;
-  confirmPassword: any;
+  email: string;
+  confirmEmail: string;
+  password: string;
+  confirmPassword: string;
+};
+
+type Credentials = {
+  email: boolean;
+  confirmEmail: boolean;
+  password: boolean;
+  confirmPassword: boolean;
 };
 
 type AuthFormProps = {
   isLogin: boolean;
   onSubmit: (input: UserInputs) => void;
-  credentialsInvalid: UserInputs;
+  credentialsInvalid: Credentials;
 };
 
 const AuthForm = ({ isLogin, onSubmit, credentialsInvalid }: AuthFormProps) => {
@@ -31,7 +37,10 @@ const AuthForm = ({ isLogin, onSubmit, credentialsInvalid }: AuthFormProps) => {
     confirmPassword: passwordsDontMatch,
   } = credentialsInvalid;
 
-  function updateInputValueHandler(inputType: string, enteredValue: string) {
+  function updateInputValueHandler(
+    inputType: 'email' | 'confirmEmail' | 'password' | 'confirmPassword',
+    enteredValue: string
+  ) {
     switch (inputType) {
       case 'email':
         setEnteredEmail(enteredValue);
@@ -59,7 +68,6 @@ const AuthForm = ({ isLogin, onSubmit, credentialsInvalid }: AuthFormProps) => {
 
   return (
     <View>
-      {/* style={styles.form */}
       <View>
         <Input
           label="Email Address"

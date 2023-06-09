@@ -6,8 +6,8 @@ type InputProps = {
   keyboardType?: KeyboardTypeOptions;
   secure?: boolean;
   onUpdateValue: (enteredValue: string) => void;
-  value: any;
-  isInvalid: any;
+  value: string;
+  isInvalid: boolean;
 };
 
 const Input = ({

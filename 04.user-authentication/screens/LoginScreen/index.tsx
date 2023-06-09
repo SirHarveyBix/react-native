@@ -5,14 +5,7 @@ const LoginScreen = () => {
     <AuthContent
       isLogin
       //
-      onAuthenticate={function ({
-        email,
-        password,
-      }: {
-        [key: string]: string;
-      }): void {
-        throw new Error('Function not implemented.');
-      }}
+      onAuthenticate={() => console.log('ok')}
     />
   );
 };
