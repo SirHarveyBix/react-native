@@ -3,6 +3,7 @@ import AuthContent from '../../components/Auth/AuthContent';
 import { createUser } from '../../utils/auth';
 import { UserInputs } from '../../utils/types';
 import LoadingOverlay from '../../components/ui/LoadingOverlay';
+import { Alert } from 'react-native';
 
 const SignupScreen = () => {
   const [isAuthentacting, setIsAuthentacting] = useState(false);
@@ -15,7 +16,10 @@ const SignupScreen = () => {
         setIsAuthentacting(false);
       }
     } catch (error) {
-      console.error(error);
+      Alert.alert(
+        'Authentication failed',
+        'Could not create user, please check your input and try again later.'
+      );
     }
   };
 
