@@ -8,7 +8,7 @@ import { useNavigation } from '@react-navigation/native';
 
 type AuthContentProps = {
   isLogin: boolean;
-  onAuthenticate: ({ email, password }: Partial<UserInputs>) => void;
+  onAuthenticate: ({ email, password }: UserInputs) => void;
 };
 
 const AuthContent = ({ isLogin, onAuthenticate }: AuthContentProps) => {

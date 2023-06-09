@@ -2,9 +2,9 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 export type UserInputs = {
   email: string;
-  confirmEmail: string;
+  confirmEmail?: string;
   password: string;
-  confirmPassword: string;
+  confirmPassword?: string;
 };
 
 export type RootStackParamList = {
