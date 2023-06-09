@@ -6,6 +6,7 @@ import { GlobalStyles } from '../../utils/constant';
 import styles from './styles';
 import { Expense, ExpensesContext } from '../../context/expense.context';
 import ExpenseForm from '../../components/ExpenseForm';
+import { storeExpense } from '../../utils/http';
 
 const ManageExpense: RouteParams<'ManageExpense'> = ({ route, navigation }) => {
   const editedExpenseId = route.params?.expenseId;
@@ -40,7 +41,7 @@ const ManageExpense: RouteParams<'ManageExpense'> = ({ route, navigation }) => {
     } else {
       addExpense(expenseData);
     }
-
+    storeExpense(expenseData);
     navigation.goBack();
   };
 
