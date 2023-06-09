@@ -19,6 +19,11 @@ const styles = StyleSheet.create({
   rowInput: {
     flex: 1,
   },
+  errorText: {
+    textAlign: 'center',
+    color: GlobalStyles.colors.error500,
+    margin: 8,
+  },
   buttons: {
     flexDirection: 'row',
     justifyContent: 'center',

@@ -24,5 +24,15 @@ const styles = StyleSheet.create({
     minHeight: 100,
     textAlignVertical: 'top',
   },
+  invalidLabel: {
+    color: GlobalStyles.colors.error500,
+  },
+  invalidInput: {
+    backgroundColor: GlobalStyles.colors.error50,
+    color: GlobalStyles.colors.primary700,
+    padding: 6,
+    borderRadius: 6,
+    fontSize: 18,
+  },
 });
 export default styles;
