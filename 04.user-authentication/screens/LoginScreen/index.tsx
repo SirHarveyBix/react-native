@@ -22,8 +22,8 @@ const LoginScreen = () => {
         'Authentication failed!',
         'Could not log you in. Please check your credentials or try again later!'
       );
+      setIsAuthentacting(false);
     }
-    setIsAuthentacting(false);
   };
 
   if (isAuthentacting) {

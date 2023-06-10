@@ -22,8 +22,8 @@ const SignupScreen = () => {
         'Authentication failed',
         'Could not create user, please check your input and try again later.'
       );
+      setIsAuthentacting(false);
     }
-    setIsAuthentacting(false);
   };
 
   if (isAuthentacting) {

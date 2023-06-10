@@ -3,9 +3,8 @@ import styles from './styles';
 import { Ionicons } from '@expo/vector-icons';
 
 type IconButtonProps = {
-  icon: 'key' | 'push' | 'map';
-
-  color: string;
+  icon: 'exit';
+  color?: string;
   size: number;
   onPress: () => void;
 };
