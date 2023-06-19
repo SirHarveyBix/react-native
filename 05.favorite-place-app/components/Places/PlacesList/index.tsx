@@ -1,5 +1,5 @@
 import { FlatList, Text, View } from 'react-native';
-import { Place } from '../../../utils/types';
+import { Place } from '../../../models/place';
 import PlaceItem from '../PlaceItem';
 import styles from './styles';
 
@@ -26,4 +26,5 @@ const PlacesList = ({ places }: PlacesListProps) => {
     />
   );
 };
+
 export default PlacesList;
