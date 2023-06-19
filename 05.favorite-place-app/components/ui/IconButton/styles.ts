@@ -1,15 +1,13 @@
 import { StyleSheet } from 'react-native';
-import { Colors } from '../../../utils/constants';
 
 const styles = StyleSheet.create({
-  fallbackContainer: {
-    flex: 1,
+  button: {
+    padding: 8,
     justifyContent: 'center',
     alignItems: 'center',
   },
-  fallbackText: {
-    fontSize: 16,
-    color: Colors.primary200,
+  pressed: {
+    opacity: 0.7,
   },
 });
 export default styles;
