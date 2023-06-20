@@ -4,7 +4,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { Colors } from '../../../utils/constants';
 
 type OutlinedButtonProps = {
-  icon: 'camera';
+  icon: 'camera' | 'location' | 'map';
   onPress: () => void;
   children: string;
 };
