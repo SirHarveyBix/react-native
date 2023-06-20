@@ -3,9 +3,10 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { StatusBar } from 'expo-status-bar';
 import AllPlaces from './screens/AllPlaces';
 import AddPlace from './screens/AddPlace';
-import { RootStackParamList } from './utils/types';
+import { RootStackParamList } from './types/types';
 import IconButton from './components/ui/IconButton';
 import { Colors } from './utils/constants';
+import Map from './screens/Map';
 
 export default function App() {
   const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -43,6 +44,13 @@ export default function App() {
             component={AddPlace}
             options={{
               title: 'Add a new Places',
+            }}
+          />
+          <Stack.Screen
+            name="Map"
+            component={Map}
+            options={{
+              title: 'Map',
             }}
           />
         </Stack.Navigator>

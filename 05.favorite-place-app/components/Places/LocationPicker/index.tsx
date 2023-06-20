@@ -9,10 +9,13 @@ import {
 import { getMapPreview } from '../../../utils/utils';
 import { useState } from 'react';
 import { LocationI } from '../../../models/place';
+import { useNavigation } from '@react-navigation/native';
+import { UseNavigationHookProp } from '../../../types/types';
 
 type LocationPickerProps = {};
 
 const LocationPicker = ({}: LocationPickerProps) => {
+  const { navigate } = useNavigation<UseNavigationHookProp>();
   const [pickedLocation, setPickedLocation] = useState<LocationI>();
   const [locationPermissionInformation, requestPermission] =
     useForegroundPermissions();
@@ -42,7 +45,9 @@ const LocationPicker = ({}: LocationPickerProps) => {
       lng: location.coords.longitude,
     });
   };
-  const pickOnMapHandler = () => {};
+  const pickOnMapHandler = () => {
+    navigate('Map');
+  };
 
   let locationPreview = <Text>No location picked yet.</Text>;
 
