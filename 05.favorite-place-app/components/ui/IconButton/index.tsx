@@ -3,7 +3,7 @@ import styles from './styles';
 import { Ionicons } from '@expo/vector-icons';
 
 type IconButtonProps = {
-  icon: 'add';
+  icon: 'add' | 'save';
   color?: string;
   size: number;
   onPress: () => void;
