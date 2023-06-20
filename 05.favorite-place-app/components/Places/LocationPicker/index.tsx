@@ -1,4 +1,4 @@
-import { Alert, View } from 'react-native';
+import { Alert, Image, Text, View } from 'react-native';
 import OutlinedButton from '../../ui/OutlinedButton';
 import styles from './styles';
 import {
@@ -6,10 +6,14 @@ import {
   getCurrentPositionAsync,
   useForegroundPermissions,
 } from 'expo-location';
+import { getMapPreview } from '../../../utils/utils';
+import { useState } from 'react';
+import { LocationI } from '../../../models/place';
 
 type LocationPickerProps = {};
 
 const LocationPicker = ({}: LocationPickerProps) => {
+  const [pickedLocation, setPickedLocation] = useState<LocationI>();
   const [locationPermissionInformation, requestPermission] =
     useForegroundPermissions();
 
@@ -33,13 +37,29 @@ const LocationPicker = ({}: LocationPickerProps) => {
       return;
     }
     const location = await getCurrentPositionAsync();
-    console.log(location);
+    setPickedLocation({
+      lat: location.coords.latitude,
+      lng: location.coords.longitude,
+    });
   };
   const pickOnMapHandler = () => {};
 
+  let locationPreview = <Text>No location picked yet.</Text>;
+
+  if (pickedLocation) {
+    locationPreview = (
+      <Image
+        style={styles.image}
+        source={{
+          uri: getMapPreview(pickedLocation),
+        }}
+      />
+    );
+  }
+
   return (
     <View>
-      <View style={styles.mapPreview}></View>
+      <View style={styles.mapPreview}>{locationPreview}</View>
       <View style={styles.actions}>
         <OutlinedButton icon="location" onPress={getLocationHandler}>
           Locate User
