@@ -1,9 +1,8 @@
 import MapView, { MapPressEvent, Marker, Region } from 'react-native-maps';
 import styles from './styles';
 import { useCallback, useLayoutEffect, useState } from 'react';
-import { LocationI } from '../../models/place';
 import { Alert } from 'react-native';
-import { RootStackParamList } from '../../types/types';
+import { LatLng, RootStackParamList } from '../../types/types';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import IconButton from '../../components/ui/IconButton';
 
@@ -12,7 +11,7 @@ type MapProps = {
 };
 
 const Map = ({ navigation }: MapProps) => {
-  const [selectedLocation, setSelectedLocation] = useState<LocationI>();
+  const [selectedLocation, setSelectedLocation] = useState<LatLng>();
   const region: Region = {
     latitude: 47.1977,
     longitude: -1.5891,

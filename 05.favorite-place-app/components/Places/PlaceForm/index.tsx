@@ -4,14 +4,16 @@ import styles from './styles';
 import ImagePicker from '../ImagePicker';
 import LocationPicker from '../LocationPicker';
 import Button from '../../ui/Button';
-import { Place } from '../../../models/place';
+import { LocationI, Place } from '../../../models/place';
 
-type PlaceFormProps = {};
+type PlaceFormProps = {
+  onCreatePlace: (placeData: Place) => void;
+};
 
-const PlaceForm = ({}: PlaceFormProps) => {
+const PlaceForm = ({ onCreatePlace }: PlaceFormProps) => {
   const [enteredTitle, setEnteredTitle] = useState<string>();
   const [selectImage, setSelectImage] = useState<string>();
-  const [pickedLocation, setPickedLocation] = useState<Partial<Place>>();
+  const [pickedLocation, setPickedLocation] = useState<LocationI>();
 
   const changeTitleHandler = (enteredText: string) => {
     setEnteredTitle(enteredText);
@@ -21,11 +23,16 @@ const PlaceForm = ({}: PlaceFormProps) => {
     setSelectImage(imageUri);
   };
 
-  const pickLocationHandler = useCallback((location: Partial<Place>) => {
+  const pickLocationHandler = useCallback((location: LocationI) => {
     setPickedLocation(location);
   }, []);
 
-  const savePlaceHandler = () => {};
+  const savePlaceHandler = () => {
+    if (pickedLocation && enteredTitle && selectImage) {
+      const placeData = new Place(enteredTitle, selectImage, pickedLocation);
+      onCreatePlace(placeData);
+    }
+  };
 
   return (
     <ScrollView style={styles.form}>

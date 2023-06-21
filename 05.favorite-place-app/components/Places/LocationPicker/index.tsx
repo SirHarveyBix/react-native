@@ -8,23 +8,28 @@ import {
 } from 'expo-location';
 import { getAddress, getMapPreview } from '../../../utils/utils';
 import { useEffect, useState } from 'react';
-import { LocationI, Place } from '../../../models/place';
+import { LocationI } from '../../../models/place';
 import {
+  RouteProp,
   useIsFocused,
   useNavigation,
   useRoute,
 } from '@react-navigation/native';
-import { UseNavigationHookProp, UseRouteHookProp } from '../../../types/types';
+import {
+  LatLng,
+  RootStackParamList,
+  UseNavigationHookProp,
+} from '../../../types/types';
 
 type LocationPickerProps = {
-  onTakeLocation: (location: Partial<Place>) => void;
+  onTakeLocation: (location: LocationI) => void;
 };
 
 const LocationPicker = ({ onTakeLocation }: LocationPickerProps) => {
   const { navigate } = useNavigation<UseNavigationHookProp>();
-  const { params } = useRoute<UseRouteHookProp>();
+  const { params } = useRoute<RouteProp<RootStackParamList, 'AddPlace'>>();
   const isFocused = useIsFocused();
-  const [pickedLocation, setPickedLocation] = useState<LocationI>();
+  const [pickedLocation, setPickedLocation] = useState<LatLng>();
   const [locationPermissionInformation, requestPermission] =
     useForegroundPermissions();
 
