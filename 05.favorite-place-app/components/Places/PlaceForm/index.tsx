@@ -4,14 +4,14 @@ import styles from './styles';
 import ImagePicker from '../ImagePicker';
 import LocationPicker from '../LocationPicker';
 import Button from '../../ui/Button';
-import { LocationI } from '../../../models/place';
+import { Place } from '../../../models/place';
 
 type PlaceFormProps = {};
 
 const PlaceForm = ({}: PlaceFormProps) => {
   const [enteredTitle, setEnteredTitle] = useState<string>();
   const [selectImage, setSelectImage] = useState<string>();
-  const [pickedLocation, setPickedLocation] = useState<LocationI>();
+  const [pickedLocation, setPickedLocation] = useState<Partial<Place>>();
 
   const changeTitleHandler = (enteredText: string) => {
     setEnteredTitle(enteredText);
@@ -21,7 +21,7 @@ const PlaceForm = ({}: PlaceFormProps) => {
     setSelectImage(imageUri);
   };
 
-  const pickLocationHandler = useCallback((location: LocationI) => {
+  const pickLocationHandler = useCallback((location: Partial<Place>) => {
     setPickedLocation(location);
   }, []);
 

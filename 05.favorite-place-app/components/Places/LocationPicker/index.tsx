@@ -6,9 +6,9 @@ import {
   getCurrentPositionAsync,
   useForegroundPermissions,
 } from 'expo-location';
-import { getMapPreview } from '../../../utils/utils';
+import { getAddress, getMapPreview } from '../../../utils/utils';
 import { useEffect, useState } from 'react';
-import { LocationI } from '../../../models/place';
+import { LocationI, Place } from '../../../models/place';
 import {
   useIsFocused,
   useNavigation,
@@ -17,7 +17,7 @@ import {
 import { UseNavigationHookProp, UseRouteHookProp } from '../../../types/types';
 
 type LocationPickerProps = {
-  onTakeLocation: (location: LocationI) => void;
+  onTakeLocation: (location: Partial<Place>) => void;
 };
 
 const LocationPicker = ({ onTakeLocation }: LocationPickerProps) => {
@@ -39,9 +39,13 @@ const LocationPicker = ({ onTakeLocation }: LocationPickerProps) => {
   }, [params, isFocused]);
 
   useEffect(() => {
-    if (pickedLocation) {
-      onTakeLocation(pickedLocation);
-    }
+    const handleLocation = async () => {
+      if (pickedLocation) {
+        const address = await getAddress(pickedLocation);
+        onTakeLocation({ ...pickedLocation, address: address });
+      }
+    };
+    handleLocation();
   }, [pickedLocation, onTakeLocation]);
 
   const verifyPermissions = async () => {
