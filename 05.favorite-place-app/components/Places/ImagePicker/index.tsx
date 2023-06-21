@@ -9,14 +9,16 @@ import { useState } from 'react';
 import styles from './styles';
 import OutlinedButton from '../../ui/OutlinedButton';
 
-type ImagePickerProps = {};
+type ImagePickerProps = {
+  onTakeImage: (imageUri: string) => void;
+};
 
-const ImagePicker = ({}: ImagePickerProps) => {
+const ImagePicker = ({ onTakeImage }: ImagePickerProps) => {
   const [pickedImage, setPickedImage] = useState<ImagePickerAsset['uri']>();
   const [cameraPermissionInformation, requestPermission] =
     useCameraPermissions();
 
-  const verifypermissions = async () => {
+  const verifyPermissions = async () => {
     if (cameraPermissionInformation?.status === PermissionStatus.UNDETERMINED) {
       const permissionResponse = await requestPermission();
       return permissionResponse.granted;
@@ -29,8 +31,8 @@ const ImagePicker = ({}: ImagePickerProps) => {
   };
 
   const takeImageHandler = async () => {
-    const haspermission = await verifypermissions();
-    if (haspermission == null) {
+    const hasPermission = await verifyPermissions();
+    if (hasPermission == null) {
       return;
     }
     const image = await launchCameraAsync({
@@ -38,7 +40,10 @@ const ImagePicker = ({}: ImagePickerProps) => {
       aspect: [16, 9],
       quality: 0.5,
     });
-    if (image.assets) setPickedImage(image.assets[0].uri);
+    if (image.assets) {
+      setPickedImage(image.assets[0].uri);
+      onTakeImage(image.assets[0].uri);
+    }
   };
 
   let imagePreview = <Text>No image taken yet.</Text>;

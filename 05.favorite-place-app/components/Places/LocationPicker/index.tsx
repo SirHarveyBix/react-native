@@ -16,7 +16,11 @@ import {
 } from '@react-navigation/native';
 import { UseNavigationHookProp, UseRouteHookProp } from '../../../types/types';
 
-const LocationPicker = () => {
+type LocationPickerProps = {
+  onTakeLocation: (location: LocationI) => void;
+};
+
+const LocationPicker = ({ onTakeLocation }: LocationPickerProps) => {
   const { navigate } = useNavigation<UseNavigationHookProp>();
   const { params } = useRoute<UseRouteHookProp>();
   const isFocused = useIsFocused();
@@ -33,6 +37,12 @@ const LocationPicker = () => {
       setPickedLocation(mapPickedLocation);
     }
   }, [params, isFocused]);
+
+  useEffect(() => {
+    if (pickedLocation) {
+      onTakeLocation(pickedLocation);
+    }
+  }, [pickedLocation, onTakeLocation]);
 
   const verifyPermissions = async () => {
     if (
