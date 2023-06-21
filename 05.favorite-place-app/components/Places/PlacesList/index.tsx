@@ -4,11 +4,11 @@ import PlaceItem from '../PlaceItem';
 import styles from './styles';
 
 type PlacesListProps = {
-  places?: Place[];
+  places: Place[];
 };
 
 const PlacesList = ({ places }: PlacesListProps) => {
-  if (!places || places.length === 0) {
+  if (places == null || places.length === 0) {
     return (
       <View style={styles.fallbackContainer}>
         <Text style={styles.fallbackText}>
@@ -20,6 +20,7 @@ const PlacesList = ({ places }: PlacesListProps) => {
 
   return (
     <FlatList
+      style={styles.list}
       data={places}
       keyExtractor={(item) => item.id}
       renderItem={({ item }) => <PlaceItem place={item} />}
