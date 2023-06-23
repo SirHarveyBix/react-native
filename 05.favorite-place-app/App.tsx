@@ -7,9 +7,26 @@ import { RootStackParamList } from './types/types';
 import IconButton from './components/ui/IconButton';
 import { Colors } from './utils/constants';
 import Map from './screens/Map';
+import { useEffect, useState } from 'react';
+import { initDatabase } from './utils/utils';
+import AppLoading from 'expo-app-loading';
+
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export default function App() {
-  const Stack = createNativeStackNavigator<RootStackParamList>();
+  const [dbInitialized, setDbInitialized] = useState(false);
+
+  useEffect(() => {
+    initDatabase()
+      .then(() => {
+        setDbInitialized(true);
+      })
+      .catch((error) => console.error(error));
+  }, []);
+
+  if (dbInitialized == null) {
+    <AppLoading />;
+  }
 
   return (
     <>
