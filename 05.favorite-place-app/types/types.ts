@@ -1,11 +1,11 @@
 import { RouteProp } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { Place } from '../models/place';
 
 export type RootStackParamList = {
-  AllPlaces: undefined | { place: Place };
+  AllPlaces: undefined;
+  PlaceDetails: undefined | { placeId: string };
   AddPlace: undefined | { pickedLat: number; pickedLng: number };
-  Map: undefined;
+  Map: undefined | { initialLat: number; initialLng: number };
 };
 
 export type UseNavigationHookProp =

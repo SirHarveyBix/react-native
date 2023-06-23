@@ -4,7 +4,7 @@ import styles from './styles';
 import ImagePicker from '../ImagePicker';
 import LocationPicker from '../LocationPicker';
 import Button from '../../ui/Button';
-import { LocationI, Place } from '../../../models/place';
+import { CompleteLocationI, Place } from '../../../models/place';
 
 type PlaceFormProps = {
   onCreatePlace: (placeData: Place) => void;
@@ -13,7 +13,7 @@ type PlaceFormProps = {
 const PlaceForm = ({ onCreatePlace }: PlaceFormProps) => {
   const [enteredTitle, setEnteredTitle] = useState<string>();
   const [selectImage, setSelectImage] = useState<string>();
-  const [pickedLocation, setPickedLocation] = useState<LocationI>();
+  const [pickedLocation, setPickedLocation] = useState<CompleteLocationI>();
 
   const changeTitleHandler = (enteredText: string) => {
     setEnteredTitle(enteredText);
@@ -23,7 +23,7 @@ const PlaceForm = ({ onCreatePlace }: PlaceFormProps) => {
     setSelectImage(imageUri);
   };
 
-  const pickLocationHandler = useCallback((location: LocationI) => {
+  const pickLocationHandler = useCallback((location: CompleteLocationI) => {
     setPickedLocation(location);
   }, []);
 

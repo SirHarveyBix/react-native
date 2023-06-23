@@ -8,7 +8,7 @@ import {
 } from 'expo-location';
 import { getAddress, getMapPreview } from '../../../utils/utils';
 import { useEffect, useState } from 'react';
-import { LocationI } from '../../../models/place';
+import { CompleteLocationI } from '../../../models/place';
 import {
   RouteProp,
   useIsFocused,
@@ -22,7 +22,7 @@ import {
 } from '../../../types/types';
 
 type LocationPickerProps = {
-  onTakeLocation: (location: LocationI) => void;
+  onTakeLocation: (location: CompleteLocationI) => void;
 };
 
 const LocationPicker = ({ onTakeLocation }: LocationPickerProps) => {

@@ -7,9 +7,27 @@ import { RootStackParamList } from './types/types';
 import IconButton from './components/ui/IconButton';
 import { Colors } from './utils/constants';
 import Map from './screens/Map';
+import { useEffect, useState } from 'react';
+import { initDatabase } from './utils/utils';
+import AppLoading from 'expo-app-loading';
+import PlaceDetails from './screens/PlaceDetails';
+
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export default function App() {
-  const Stack = createNativeStackNavigator<RootStackParamList>();
+  const [dbInitialized, setDbInitialized] = useState(false);
+
+  useEffect(() => {
+    initDatabase()
+      .then(() => {
+        setDbInitialized(true);
+      })
+      .catch((error) => console.error(error));
+  }, []);
+
+  if (dbInitialized == null) {
+    <AppLoading />;
+  }
 
   return (
     <>
@@ -46,11 +64,12 @@ export default function App() {
               title: 'Add a new Places',
             }}
           />
+          <Stack.Screen name="Map" component={Map} />
           <Stack.Screen
-            name="Map"
-            component={Map}
+            name="PlaceDetails"
+            component={PlaceDetails}
             options={{
-              title: 'Map',
+              title: 'Loading place .. ',
             }}
           />
         </Stack.Navigator>

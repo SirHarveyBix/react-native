@@ -1,17 +1,17 @@
 import { Image, Pressable, Text, View } from 'react-native';
-import { Place } from '../../../models/place';
+import { CompletePlace } from '../../../models/place';
 import styles from './styles';
 
 type PlaceItemProps = {
-  place: Place;
-  onSelect?: () => void;
+  place: CompletePlace;
+  onSelect: (id: string) => void;
 };
 
 const PlaceItem = ({ place, onSelect }: PlaceItemProps) => {
   return (
     <Pressable
       style={({ pressed }) => [styles.item, pressed && styles.pressed]}
-      onPress={onSelect}
+      onPress={onSelect.bind(this, place.id)}
     >
       <Image style={styles.image} source={{ uri: place.imageUri }} />
       <View style={styles.info}>
