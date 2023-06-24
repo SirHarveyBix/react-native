@@ -8,9 +8,16 @@
    styling et layouts
    3. [meal-app](02.meal-app/)
    decouverte de la navigation
-   3.1. [mini](02.1.mini/): plus sur la navigation
+
+      3.1. [mini](02.1.mini/): plus sur la navigation
+      
    4. [tracker-expense](03.tracker-expense-app/)
-   resumé de ce qui a deéjà été vu
+   resumé de ce qui a déjà été vu
    5. [authentication](04.user-authentication/)
    decouvert de l'authentification (local storage) => rien de nouveau
    6. [favorite-places](05.favorite-place-app/): fonctionnalité native (camera, localisation)
+   7. [publish](06.publish/)
+      beaucoup de commandes
+   8. [notification](07.notification/)
+      pas grand choses 
+
