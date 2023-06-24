@@ -1,0 +1,43 @@
+{
+  "expo": {
+    "name": "notification",
+    "slug": "notification",
+    "version": "1.0.1",
+    "orientation": "default",
+    "userInterfaceStyle": "light",
+    "backgroundColor": "#24180f",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "buildNumber": "1.0.1",
+      "supportsTablet": true,
+      "bundleIdentifier": "com.sirharvey.notification"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#FFFFFF"
+      },
+      "package": "com.sirharvey.notification"
+    },
+    "extra": {},
+    "plugins": [
+      [
+        "expo-notifications",
+        {
+          "icon": "./local/assets/icon.png",
+          "color": "#ffffff"
+        }
+      ]
+    ]
+  }
+}
