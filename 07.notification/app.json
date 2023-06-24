@@ -29,7 +29,11 @@
       },
       "package": "com.sirharvey.notification"
     },
-    "extra": {},
+    "extra": {
+      "eas": {
+        "projectId": "4ca352e7-cd21-49fb-bf35-6ed95581ae37"
+      }
+    },
     "plugins": [
       [
         "expo-notifications",

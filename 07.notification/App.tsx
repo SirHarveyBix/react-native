@@ -7,7 +7,7 @@ Notifications.setNotificationHandler({
   handleNotification: async () => {
     return {
       shouldPlaySound: false,
-      shouldSetBadge: false,
+      shouldSetBadge: true,
       shouldShowAlert: true,
     };
   },
@@ -49,19 +49,17 @@ export default function App() {
   useEffect(() => {
     const subscription1 = Notifications.addNotificationReceivedListener(
       (notification) => {
-        console.log('NOTIFICATION RECEIVED');
-        console.log(notification);
+        console.log('NOTIFICATION RECEIVED', notification);
         const userName = notification.request.content.data.userName;
-        console.log(userName);
+        console.log('userName', userName);
       }
     );
 
     const subscription2 = Notifications.addNotificationResponseReceivedListener(
       (response) => {
-        console.log('NOTIFICATION RESPONSE RECEIVED');
-        console.log(response);
+        console.log('NOTIFICATION RESPONSE RECEIVED', response);
         const userName = response.notification.request.content.data.userName;
-        console.log(userName);
+        console.log('userName', userName);
       }
     );
 
@@ -71,7 +69,7 @@ export default function App() {
     };
   }, []);
 
-  function scheduleNotificationHandler() {
+  const scheduleNotificationHandler = () => {
     Notifications.scheduleNotificationAsync({
       content: {
         title: 'My first local notification',
@@ -80,7 +78,7 @@ export default function App() {
       },
       trigger: { seconds: 5 },
     });
-  }
+  };
 
   return (
     <View style={styles.container}>
