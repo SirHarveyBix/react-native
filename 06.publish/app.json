@@ -1,0 +1,38 @@
+{
+  "expo": {
+    "name": "Recipt book",
+    "slug": "Recipt-book",
+    "version": "1.0.1",
+    "orientation": "default",
+    "userInterfaceStyle": "light",
+    "backgroundColor": "#24180f",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "buildNumber": "1.0.1",
+      "supportsTablet": true,
+      "bundleIdentifier": "com.sirharvey.Reciptbook"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#FFFFFF"
+      },
+      "package": "com.sirharvey.Reciptbook"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "4ca352e7-cd21-49fb-bf35-6ed95581ae37"
+      }
+    }
+  }
+}
